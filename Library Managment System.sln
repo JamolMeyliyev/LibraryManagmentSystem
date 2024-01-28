@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagmentSystem.Logi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagmentSystem.Core", "LibraryManagmentSystem.Core\LibraryManagmentSystem.Core.csproj", "{7C2492CA-6047-4C53-A2A1-A37FFBF9A385}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagmentSystem.Integration", "LibraryManagmentSystem.Integration\LibraryManagmentSystem.Integration.csproj", "{93145FA8-5000-43D0-A361-27F1AB3D5683}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7C2492CA-6047-4C53-A2A1-A37FFBF9A385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C2492CA-6047-4C53-A2A1-A37FFBF9A385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C2492CA-6047-4C53-A2A1-A37FFBF9A385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93145FA8-5000-43D0-A361-27F1AB3D5683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93145FA8-5000-43D0-A361-27F1AB3D5683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93145FA8-5000-43D0-A361-27F1AB3D5683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93145FA8-5000-43D0-A361-27F1AB3D5683}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
