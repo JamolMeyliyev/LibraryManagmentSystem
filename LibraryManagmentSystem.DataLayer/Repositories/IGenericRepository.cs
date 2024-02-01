@@ -1,9 +1,12 @@
 ﻿
+using LibraryManagmentSystem.DataLayer.Context;
 using System.Linq.Expressions;
+using System.Numerics;
 
 namespace LibraryManagmentSystem.DataLayer.Repositories;
 
-public interface IGenericRepository<TEntity, TKey> 
+
+public interface IGenericRepository<TEntity, TKey>
 {
     ValueTask<TEntity> InsertAsync(TEntity entity);
     IQueryable<TEntity> SelectAll();

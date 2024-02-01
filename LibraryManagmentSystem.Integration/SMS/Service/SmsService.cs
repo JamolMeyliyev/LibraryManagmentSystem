@@ -31,12 +31,12 @@ public class SmsService : ISmsService
         response.EnsureSuccessStatusCode();
         
         var jsonProviderToken = await response.Content.ReadAsStringAsync();
-        if (jsonProviderToken.IsNullOrEmpty())
+        if (jsonProviderToken is  null)
         {
             throw new Exception();
         }
         var apiResponse = JsonConvert.DeserializeObject<SmsApiResponseModel>(jsonProviderToken);
-        if(apiResponse?.Data is null || apiResponse.Data.Token.IsNullOrEmpty())
+        if(apiResponse?.Data is null || apiResponse.Data.Token is null)
         {
             throw new Exception();
         }

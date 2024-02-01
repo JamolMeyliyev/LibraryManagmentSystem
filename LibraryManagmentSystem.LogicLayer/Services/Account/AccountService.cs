@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using LibraryManagmentSystem.DataLayer.Context;
 using LibraryManagmentSystem.DataLayer.Entities;
-using LibraryManagmentSystem.DataLayer.Repositories;
+
 using LibraryManagmentSystem.Integration.SMS;
 using LibraryManagmentSystem.LogicLayer.Models;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 
 
-namespace LibraryManagmentSystem.LogicLayer.Services.Account;
+namespace LibraryManagmentSystem.LogicLayer.Services;
 
 public class AccountService : IAccountService
 {
@@ -19,9 +19,9 @@ public class AccountService : IAccountService
     private readonly IMapper _mapper;
     private readonly IMemoryCache _cache;
     private readonly ISmsService _smsService;
-    private readonly IUserRepository _userRepos;
+    private readonly IUserServive _userRepos;
     public AccountService(ITokenService tokenService, LibraryDbContext context,
-        IMapper mapper, IMemoryCache cache, ISmsService smsService, IUserRepository userRepos)
+        IMapper mapper, IMemoryCache cache, ISmsService smsService, IUserServive userRepos)
     {
         _tokenService = tokenService;
         _context = context;
@@ -65,7 +65,7 @@ public class AccountService : IAccountService
 
 
 
-    public async ValueTask<UserReturnModel> VerifyingSmsCode(string smsCode, string phoneNumber)
+    public async ValueTask<ReturnUserModel> VerifyingSmsCode(string smsCode, string phoneNumber)
     {
         if (!_cache.TryGetValue(phoneNumber, out string? cacheModel))
         {
@@ -86,11 +86,11 @@ public class AccountService : IAccountService
 
         user.Password = new PasswordHasher<User>().HashPassword(user, model.Password);
 
-        await _userRepos.InsertAsync(user);
+        //await _userRepos.CreateAsync(user);
 
         _cache.Remove(user.PhoneNumber);
 
-        return _mapper.Map<UserReturnModel>(user);
+        return _mapper.Map<ReturnUserModel>(user);
     }
 
 

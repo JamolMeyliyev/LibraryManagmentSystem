@@ -1,15 +1,24 @@
 ﻿
 
-namespace LibraryManagmentSystem.DataLayer.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
-public class Module
+namespace LibraryManagmentSystem.DataLayer.Entities;
+[Table("modules")]
+public class Module:BaseEntity
 {
     public long Id { get; set; }
     public required string ShortName { get; set; }
     public required string FullName { get; set; }
-    public DateTime CreateDate { get; set; } = DateTime.Now;
-    public DateTime UpdateDate { get; set; }
+    public DateTime CreateDate { get; set; } 
+    public DateTime? UpdateDate { get; set; }
     public int StateId { get; set; }
-    public EnumState? State { get; set; }
-    public bool IsDeleted { get; set; }
+    
+    [InverseProperty("Modules")]
+    [ForeignKey("StateId")]
+
+    public virtual EnumState? State { get; set; }
+ 
+    [InverseProperty("Module")]
+    public virtual List<RoleModule>? RoleModules { get; set; }
 }
