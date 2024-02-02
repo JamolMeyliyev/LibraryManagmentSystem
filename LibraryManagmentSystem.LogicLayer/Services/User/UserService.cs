@@ -26,17 +26,16 @@ public class UserService : IUserServive
     }
     public async ValueTask<long> CreateAsync(CreateUserModel createModel)
     {
-
+        var entity = _mapper.Map<User>(createModel);
         using (var transaction = _unitOfWork.BeginTransaction())
         {
             try
             {
-
-                var entity =  _mapper.Map<User>(createModel);
+              
                 var user = await _repos.InsertAsync(entity);
-                if(createModel.UserRoles is not null || createModel.UserRoles.Count > 0)
+                if(createModel.Roles is not null && createModel.Roles.Count > 0)
                 {
-                    foreach(var roleId in createModel.UserRoles)
+                    foreach(var roleId in createModel.Roles)
                     {
                         var roleEntity = new UserRole()
                         {
@@ -44,7 +43,7 @@ public class UserService : IUserServive
                             UserId = user.Id,
                             StateId = 1,
                             IsDeleted = false,
-                            CreateDate= DateTime.Now,
+                            CreateDate= DateTime.UtcNow,
                         };
                         await _userRoleRepos.InsertAsync(roleEntity);
                         
