@@ -36,9 +36,7 @@ public class LibraryDbContext:DbContext
 // new EnumState { Id = 2,FullName = "", ShortName = "", CreateDate = default, IsDeleted = false }
  
 //);
-        modelBuilder.Entity<EnumState>()
-            .HasMany(e => e.UserRoles)
-            .WithOne().HasForeignKey(s => s.StateId); // Assuming UserRole class has a navigation property
+         // Assuming UserRole class has a navigation property
 
         modelBuilder.Entity<EnumState>()
             .HasMany(e => e.Roles)
