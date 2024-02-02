@@ -23,6 +23,7 @@ public partial class User:BaseEntity
     [InverseProperty("Users")]
     [ForeignKey("StateId")]
     public virtual EnumState? State { get; set; }
+
     [JsonIgnore]
     [InverseProperty("User")]
     public virtual List<UserRole>? UserRoles { get; set; }
