@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace LibraryManagmentSystem.DataLayer.Entities;
-
+[Table("states")]
 public class EnumState
 {
     public int Id { get; set; }
@@ -17,14 +17,12 @@ public class EnumState
     [JsonIgnore]
     [InverseProperty("State")]
     public virtual List<User>? Users { get; set; }
+    
+    [InverseProperty("State")]
+    public virtual List<Role>? Roles { get; set; }
     [JsonIgnore]
     [InverseProperty("State")]
-    public virtual List<UserRole> UserRoles { get; set; }
-    [InverseProperty("State")]
-    public virtual List<Role> Roles { get; set; }
-    [JsonIgnore]
-    [InverseProperty("State")]
-    public virtual List<RoleModule> RoleModules { get; set; }
+    public virtual List<RoleModule>? RoleModules { get; set; }
 
 
 }
