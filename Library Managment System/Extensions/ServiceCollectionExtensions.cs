@@ -48,6 +48,7 @@ public static class ServiceCollectionExtensions
         services.AddAutoMapper(typeof(RoleToReturnRoleModelMapper));
         
         services.AddAutoMapper(typeof(UpdateRoleModelToRoleMapper));
+        services.AddAutoMapper(typeof(CreateUserToUserMapper));
 
 
         return services;
